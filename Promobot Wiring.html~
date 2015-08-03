@@ -1,0 +1,57 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title>Wiring</title>
+    <style type="text/css" media="screen">
+      table {
+          text-align: left;
+          width: 400px;
+      
+          border-top: 2px solid black; 
+          border-bottom: 2px solid black;
+          border-collapse:collapse;
+          border-spacing:0px;
+      }
+      th {
+          border-top: 2px solid black; 
+          border-bottom: 2px solid black;
+      }
+      .pound {
+          width: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Wiring</h1>
+                    <h2>DIO</h2>
+	    <table><tr>
+	        <th class="pound">#</th>
+	        <th>Sensor</th></tr>
+	                  	    <tr><td>0</td><td>Cannon Actuator Encoder</td></tr>
+	            	    <tr><td>1</td><td>Cannon Actuator Encoder</td></tr>
+	                                                                                                                                                                                                                                                                                                     	    </table>
+                        <h2>PWMs</h2>
+	    <table><tr>
+	        <th class="pound">#</th>
+	        <th>Motor</th></tr>
+	                  	    <tr><td>0</td><td>Drive Train Left Front Motor</td></tr>
+	            	    <tr><td>1</td><td>Drive Train Right Front Motor</td></tr>
+	            	    <tr><td>2</td><td>Drive Train Left Rear Motor</td></tr>
+	            	    <tr><td>3</td><td>Drive Train Right Rear Motor</td></tr>
+	            	    <tr><td>4</td><td>Cannon Actuator Motor</td></tr>
+	                                                                                                                                                                                                                                                                 	    </table>
+    
+            
+            
+                
+                    <h2>PCM 0</h2>
+	    <table><tr>
+	        <th class="pound">#</th>
+	        <th>Solenoid</th></tr>
+	                                                                  	    <tr><td>4</td><td>Cannons Solenoid 1 Output </td></tr>
+	            	    <tr><td>5</td><td>Cannons Solenoid 2 Output </td></tr>
+	            	    <tr><td>6</td><td>Cannons Solenoid 3 Output </td></tr>
+	            	    <tr><td>7</td><td>Cannons Solenoid 4 Output </td></tr>
+	                                                                                                                                                                                                                             	    </table>
+                                                                                                                                                                                                                                                    
+          </body>
+</html>
