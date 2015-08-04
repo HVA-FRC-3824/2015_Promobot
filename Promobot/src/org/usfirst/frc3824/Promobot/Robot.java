@@ -75,18 +75,20 @@ public class Robot extends IterativeRobot {
      */
     public void disabledInit(){
     	
-    	Robot.cannonActuator.setPositionSetpoint(Constants.HOME_POSITION);
+    	Robot.cannonActuator.setPositionDownSetpoint(Constants.HOME_POSITION);
 		Robot.cannonActuator.resetPID();
         Robot.cannonActuator.setOutputRange();
-		Robot.cannonActuator.enablePositionPID();
+		Robot.cannonActuator.enablePositionDownPID();
 		Robot.cannonActuator.setContinuous();
+		
+		Robot.humanSafetySensor.getBatSensor().setEnabled(true);
     	
     }
 
     public void disabledPeriodic() {
         Scheduler.getInstance().run();
         
-        SmartDashboard.putNumber("Position Setpoint", Robot.cannonActuator.getPositionSetpoint());
+        SmartDashboard.putNumber("Position Setpoint", Robot.cannonActuator.getPositionDownSetpoint());
         SmartDashboard.putNumber("Can Actuator Motor", RobotMap.cannonActuatorMotor.get());
         SmartDashboard.putNumber("Can Actuator Encoder", RobotMap.cannonActuatorEncoder.get());
     }
@@ -111,7 +113,7 @@ public class Robot extends IterativeRobot {
         if (autonomousCommand != null) autonomousCommand.cancel();
         
         Robot.humanSafetySensor.getBatSensor().setEnabled(true);
-        Robot.humanSafetySensor.getBatSensor().setAutomaticMode(true);
+        //Robot.humanSafetySensor.getBatSensor().setAutomaticMode(false);
         
         //Robot.cannonActuator.resetEncoder();
     }
@@ -135,16 +137,21 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putNumber("Can Actuator Motor", RobotMap.cannonActuatorMotor.get());
         SmartDashboard.putNumber("Can Actuator Encoder", RobotMap.cannonActuatorEncoder.get());
         
-        SmartDashboard.putNumber("Can Actuator Error", Robot.cannonActuator.getError());
+        SmartDashboard.putNumber("Can Actuator Up Error", Robot.cannonActuator.getUpError());
+        SmartDashboard.putNumber("Can Actuator Down Error", Robot.cannonActuator.getDownError());
         
-        SmartDashboard.putNumber("Position Setpoint", Robot.cannonActuator.getPositionSetpoint());
+        SmartDashboard.putNumber("Position Up Setpoint", Robot.cannonActuator.getPositionUpSetpoint());
+        SmartDashboard.putNumber("Position Down Setpoint", Robot.cannonActuator.getPositionDownSetpoint());
         
         SmartDashboard.putBoolean("Bat Sensor", RobotMap.humanSafetySensorBatSensor.isEnabled());
         
-        //Robot.humanSafetySensor.spiderSense();
+        Robot.humanSafetySensor.spiderSense();
         
         SmartDashboard.putNumber("Bat Sensor Range", RobotMap.humanSafetySensorBatSensor.getRangeInches());
         SmartDashboard.putBoolean("Bat Sensor Range Validity", RobotMap.humanSafetySensorBatSensor.isRangeValid());
+        
+        SmartDashboard.putBoolean("Up PID", Robot.cannonActuator.isPositionUpPIDEnabled());
+        SmartDashboard.putBoolean("Down PID", Robot.cannonActuator.isPositionDownPIDEnabled());
     }
 
     /**

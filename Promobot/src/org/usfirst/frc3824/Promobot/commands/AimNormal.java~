@@ -34,11 +34,25 @@ public class  AimNormal extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	
-    	Robot.cannonActuator.setPositionSetpoint(Constants.NORMAL_SETPOINT);
-		Robot.cannonActuator.resetPID();
-        Robot.cannonActuator.setOutputRange();
-		Robot.cannonActuator.enablePositionPID();
-		Robot.cannonActuator.setContinuous();
+    	if (Robot.cannonActuator.getPosition() <= Constants.NORMAL_SETPOINT) {
+    		
+    		Robot.cannonActuator.setPositionUpSetpoint(Constants.NORMAL_SETPOINT);
+    		Robot.cannonActuator.resetPID();
+            Robot.cannonActuator.setOutputRange();
+    		Robot.cannonActuator.enablePositionUpPID();
+    		Robot.cannonActuator.setContinuous();
+    		
+    	}
+    	
+    	else {
+    		
+    		Robot.cannonActuator.setPositionDownSetpoint(Constants.NORMAL_SETPOINT);
+    		Robot.cannonActuator.resetPID();
+            Robot.cannonActuator.setOutputRange();
+    		Robot.cannonActuator.enablePositionDownPID();
+    		Robot.cannonActuator.setContinuous();
+    		
+    	}
     }
 
     // Called repeatedly when this Command is scheduled to run

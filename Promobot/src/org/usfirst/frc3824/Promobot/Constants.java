@@ -4,7 +4,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Constants
 {	
-    public final static double CANNON_ACTUATOR_POSITION_P            =   0.01; //0.01
+    public final static double CANNON_ACTUATOR_UP_POSITION_P         =   0.01; //0.01
+    public final static double CANNON_ACTUATOR_DOWN_POSITION_P       =   0.0001;
     public final static double CANNON_ACTUATOR_POSITION_I            =   0.0;  //0.0
     public final static double CANNON_ACTUATOR_POSITION_D            =   0.0;  //0.0
     

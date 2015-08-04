@@ -35,10 +35,10 @@ public class  HoldPosition extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	
-    	Robot.cannonActuator.setPositionSetpoint(RobotMap.cannonActuatorEncoder.get());
+    	Robot.cannonActuator.setPositionUpSetpoint(RobotMap.cannonActuatorEncoder.get());
 		Robot.cannonActuator.resetPID();
         Robot.cannonActuator.setOutputRange();
-		Robot.cannonActuator.enablePositionPID();
+		Robot.cannonActuator.enablePositionUpPID();
 		Robot.cannonActuator.setContinuous();
     }
 

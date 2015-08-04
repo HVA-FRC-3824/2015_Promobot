@@ -37,19 +37,19 @@ public class  FireCannon2 extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	
-        if (Robot.cannons.safetyLock() == true) {
-    		
-    		end();
-    		
-    	}
-    	
-    	else {
+//        if (Robot.cannons.safetyLock() == true) {
+//    		
+//    		end();
+//    		
+//    	}
+//    	
+//    	else {
     	
     	Robot.cannons.getSolenoid2().set(true);
     	
     	timer.reset();
     	timer.start();
-    	}
+    	//}
     }
 
     // Called repeatedly when this Command is scheduled to run
