@@ -11,6 +11,7 @@
 
 package org.usfirst.frc3824.Promobot.commands;
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.command.WaitCommand;
 
 /**
  *
@@ -35,10 +36,16 @@ public class FireAllCannons extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-    	addParallel(new FireCannon1());
-    	addParallel(new FireCannon2());
-    	addParallel(new FireCannon3());
-    	addParallel(new FireCannon4());
+    	addSequential(new FireCannon1());
+    	addSequential(new WaitCommand(0.5));
+
+    	addSequential(new FireCannon2());
+    	addSequential(new WaitCommand(0.5));
+
+    	addSequential(new FireCannon3());
+    	addSequential(new WaitCommand(0.5));
+ 
+    	addSequential(new FireCannon4());
     	
     }
 }

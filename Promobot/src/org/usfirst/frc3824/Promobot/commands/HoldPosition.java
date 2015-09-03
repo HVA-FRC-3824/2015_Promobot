@@ -38,6 +38,7 @@ public class  HoldPosition extends Command {
     	Robot.cannonActuator.setPositionUpSetpoint(RobotMap.cannonActuatorEncoder.get());
 		Robot.cannonActuator.resetPID();
         Robot.cannonActuator.setOutputRange();
+        //Robot.cannonActuator.setUpTolerance();
 		Robot.cannonActuator.enablePositionUpPID();
 		Robot.cannonActuator.setContinuous();
     }

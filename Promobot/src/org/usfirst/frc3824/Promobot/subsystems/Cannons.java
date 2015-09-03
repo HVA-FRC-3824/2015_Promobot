@@ -73,20 +73,20 @@ public class Cannons extends Subsystem {
     	
     }
     
-    public boolean safetyLock() {
-    	
-    	if (Robot.humanSafetySensor.getBatSensor().getRangeInches() >= 108) {
-    		
-    		return false;
-    		
-    	}
-    	
-    	else {
-    		
-    		return true;
-    		
-    	}
-    	
-    }
+//    public boolean safetyLock() {
+//    	
+//    	if (Robot.humanSafetySensor.getBatSensor().getRangeInches() >= 108) {
+//    		
+//    		return false;
+//    		
+//    	}
+//    	
+//    	else {
+//    		
+//    		return true;
+//    		
+//    	}
+//    	
+//    }
 }
 

@@ -39,6 +39,7 @@ public class  AimHigh extends Command {
     		Robot.cannonActuator.setPositionUpSetpoint(Constants.HIGH_SETPOINT);
     		Robot.cannonActuator.resetPID();
             Robot.cannonActuator.setOutputRange();
+            //Robot.cannonActuator.setUpTolerance();
     		Robot.cannonActuator.enablePositionUpPID();
     		Robot.cannonActuator.setContinuous();
     		
@@ -49,6 +50,7 @@ public class  AimHigh extends Command {
     		Robot.cannonActuator.setPositionDownSetpoint(Constants.HIGH_SETPOINT);
     		Robot.cannonActuator.resetPID();
             Robot.cannonActuator.setOutputRange();
+            //Robot.cannonActuator.setDownTolerance();
     		Robot.cannonActuator.enablePositionDownPID();
     		Robot.cannonActuator.setContinuous();
     		
@@ -62,11 +64,23 @@ public class  AimHigh extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+    	
+    	if ((Robot.cannonActuator.getPosition() > (Constants.HIGH_SETPOINT - Constants.TOLERANCE)) && (Robot.cannonActuator.getPosition() < Constants.HIGH_SETPOINT + Constants.TOLERANCE)) {
+        	
+    		return true;
+    	}
+    	else {	
+    		return false;
+    	}
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	
+    	Robot.cannonActuator.setPositionUpSetpoint(Robot.cannonActuator.getPosition());
+		Robot.cannonActuator.disablePositionDownPID();
+		Robot.cannonActuator.enablePositionUpPID();
+    	
     }
 
     // Called when another command which requires one or more of the same

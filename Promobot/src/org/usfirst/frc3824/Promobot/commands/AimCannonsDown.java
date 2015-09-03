@@ -43,9 +43,10 @@ public class  AimCannonsDown extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	if (Robot.cannonActuator.getPosition() < Constants.MIN_HEIGHT) {
+    	if (Robot.cannonActuator.getPosition() > Constants.MIN_HEIGHT) {
     		
     		Robot.cannonActuator.setPositionUpSetpoint(Constants.MIN_HEIGHT);
+    		//Robot.cannonActuator.setUpTolerance();
     		Robot.cannonActuator.enablePositionUpPID();
     		
     	}

@@ -35,15 +35,22 @@ public class CannonActuator extends Subsystem {
     
     PIDController positionUpPID = new PIDController(
 	        Constants.CANNON_ACTUATOR_UP_POSITION_P,
-	        Constants.CANNON_ACTUATOR_POSITION_I,
-	        Constants.CANNON_ACTUATOR_POSITION_D, 
+	        Constants.CANNON_ACTUATOR_UP_POSITION_I,
+	        Constants.CANNON_ACTUATOR_UP_POSITION_D, 
 	        encoder, 
 	        motor);
     
     PIDController positionDownPID = new PIDController(
 	        Constants.CANNON_ACTUATOR_DOWN_POSITION_P,
-	        Constants.CANNON_ACTUATOR_POSITION_I,
-	        Constants.CANNON_ACTUATOR_POSITION_D, 
+	        Constants.CANNON_ACTUATOR_DOWN_POSITION_I,
+	        Constants.CANNON_ACTUATOR_DOWN_POSITION_D, 
+	        encoder, 
+	        motor);
+    
+    PIDController flappingWingsPID = new PIDController(
+	        Constants.CANNON_ACTUATOR_FLAPPING_POSITION_P,
+	        Constants.CANNON_ACTUATOR_FLAPPING_POSITION_I,
+	        Constants.CANNON_ACTUATOR_FLAPPING_POSITION_D, 
 	        encoder, 
 	        motor);
     
@@ -79,6 +86,11 @@ public class CannonActuator extends Subsystem {
 		positionDownPID.setSetpoint(setpoint);
 	}
     
+    public void setPositionFlappingSetpoint(double setpoint)
+	{
+		positionDownPID.setSetpoint(setpoint);
+	}
+    
     public boolean isPositionUpPIDEnabled()
 	{
 		return positionUpPID.isEnable();
@@ -87,6 +99,11 @@ public class CannonActuator extends Subsystem {
     public boolean isPositionDownPIDEnabled()
 	{
 		return positionDownPID.isEnable();
+	}
+    
+    public boolean isPositionFlappingPIDEnabled()
+	{
+		return flappingWingsPID.isEnable();
 	}
     
     public double getPositionUpSetpoint()
@@ -99,6 +116,11 @@ public class CannonActuator extends Subsystem {
 		return positionDownPID.getSetpoint();
 	}
     
+    public double getPositionFlappingSetpoint()
+	{
+		return flappingWingsPID.getSetpoint();
+	}
+    
     public void enablePositionUpPID()
 	{
 		positionUpPID.enable();
@@ -107,6 +129,21 @@ public class CannonActuator extends Subsystem {
     public void enablePositionDownPID()
 	{
 		positionDownPID.enable();
+	}
+    
+    public void disablePositionUpPID()
+	{
+		positionUpPID.disable();
+	}
+    
+    public void disablePositionDownPID()
+	{
+		positionDownPID.disable();
+	}
+    
+    public void enablePositionFlappingPID()
+	{
+		flappingWingsPID.enable();
 	}
     
     public double getUpError()
@@ -128,24 +165,39 @@ public class CannonActuator extends Subsystem {
 	{
 		positionUpPID.reset();
 		positionDownPID.reset();
+		flappingWingsPID.reset();
 	}
 	
 	public void setContinuous()
 	{
 		positionUpPID.setContinuous();
 		positionDownPID.setContinuous();
+		flappingWingsPID.setContinuous();
 	}
 	
 	public void setOutputRange()
 	{
 		positionUpPID.setOutputRange(-Constants.MOTOR_LIMIT, Constants.MOTOR_LIMIT);
 		positionDownPID.setOutputRange(-Constants.MOTOR_LIMIT, Constants.MOTOR_LIMIT);
+		flappingWingsPID.setOutputRange(-Constants.MOTOR_LIMIT, Constants.MOTOR_LIMIT);
 	}
 	
 	public void setMotorPower(double motorPower)
 	{
 		motor.set(motorPower);
 	}
+	
+//    public void setUpTolerance() {
+//		
+//		positionUpPID.setTolerance(Constants.UP_TOLERANCE);
+//		
+//	}
+	
+//	public void setDownTolerance() {
+//		
+//		positionDownPID.setTolerance(Constants.DOWN_TOLERANCE);
+//		
+//	}
 	
 //	public void setProportion(double P) {
 //		
